@@ -9,8 +9,11 @@ Operating Systems - Three Easy Pieces, by Remzi and Andrea Arpaci-Dusseau
 
 ## Syllabus
 > Quizzes (total of 3) 300 points each
+
 > HW Presentation (total of 5-6) Total of 100 points
+
 > Lab (200 points)
+
 > Total: 1200 points
 
 **This repository will include in-class notes, HW, and HW solutions, Lab lessons, Lab Assignments and more.**
