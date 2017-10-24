@@ -1,0 +1,96 @@
+Please do only the HW for your class. 
+
+CSC 332  Fall 2017      9:15 AM class           HW2 (Race conditions)  Due: Thurs Oct 5.
+Q1.
+Consider the following code.
+
+
+                        i=40;
+
+                        cobegin
+
+
+S11:    while (i > 1)                   S21:    while (i > 5)
+
+S12:            i= i - 1;                       S22:            i= i - 1;
+
+
+                        coend;
+        
+                        print(i);
+                
+
+
+What are all the possibilities regarding the output from this program?
+Give a scenario for each such possibility.
+
+
+
+Q2.
+Consider the following code.
+
+
+                        i=5;
+
+                        cobegin
+
+
+S11:    while i > -1 do                 S21:    while i < 1 do
+
+S12:            i= i - 1;               S22:            i= i+1;
+
+
+                        coend;
+        
+                        print(i);
+                
+
+What are all the possibilities regarding the output from this program?
+Give a scenario for each such possibility.
+
+
+------------------
+
+
+CSC 332  Fall 2017      11 AM class             HW2 (Race conditions) Due: Thurs Oct 5
+
+
+Q1.
+Consider the following code.
+
+
+                i=1;
+
+                cobegin
+
+
+S11:    while (i< 4)            S21:    while (i< 4) do
+
+S12:            i= i+1;         S22:            i= i+1;
+
+
+
+                coend;
+        
+                print(i);
+
+
+What are all the possibilities regarding the output produced on running this program?
+Give a scenario for each such possibility.
+
+Q2.
+Consider the following code.
+
+                        i=5;
+
+                        cobegin
+S11:    while (i > 0)           S21:    while (i < 1) do
+S12:            i= i - 1;               S22:            i= i+1;
+
+                        coend;
+        
+                        print(i);
+                
+
+What are all the possibilities regarding the output from this program?
+Give a scenario for each such possibility.
