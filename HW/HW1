@@ -1,0 +1,63 @@
+CSc332 9:15Am sections HW1 (Interrupts).
+
+Due Tues Sept. 19.
+
+Q1.
+Consider a service routine that responds to a timer interrupt.
+Assume that the function of this service routine is simply
+to increment the current value of ``clock''-- an integer
+stored in absolute address CLOCK. Ignore any overflow
+that may arise from this operation.
+
+Below is a pseudo code for this service routine.
+
+Pseudo code of the service routine
+----------------------------------
+
+Load CLOCK, R1 (* loads the integer stored in address CLOCK to register R1 *)
+INCREMENT R1 by 1
+STORE R1, CLOCK (* stores the value in R1 to the memory location CLOCK *)
+RETURN (* Pops the return address from control stack and loads it to PC *)
+
+Questions:
+(a) Point out any problems with this code, in less than 30 words.
+
+(b) Show a corrected pseudo code.
+
+Q2.
+Consider the following change to the interrupt mechanism discussed in class.
+
+Suppose we are not concerned with protection issues—users are well behaved and they don’t use priviledged instructions and stay within their memory area.
+
+Suppose now the mode bit is always 1(assume that mode bit==1 means "supervisor mode"), even in user program execution, since protection is not an issue.
+
+when an interrupt occurs, hardware  saves only the PC, not the PSW. Similarly, hardware loads from the Interrupt vector only the PC, not the PSW. RTI instruction reloads only the PC, not the PSW.
+
+Any problems with this scheme?
+
+-------------------------------------------------
+
+CSC 332 Fall 2017 11AM section HW1 (interrupts)
+
+Due: Tues, Sep 19.
+
+Q1.
+Consider the interrupt mechanism discussed in class with the following modification. On occurrence of the interrupt, the hardware will load only the new PC value (from the interrupt vector), and not the PSW value. 
+A special machine instruction is provided, which would load the new PSW value (corresponding to the most recent interrupt that has occurred) from the interrupt vector. 
+
+There are no other changes to the interrupt mechanism
+that we discussed in class.
+
+What could go wrong with this scheme?
+Explain in LESS THAN 50 WORDS.
+
+Q2.
+Consider a system with two CPU's. Suppose they
+share a single control stack-- the stack where old
+PC, PSW values are stored when an interrupt occurs.
+
+When RTI is executed, the stack is popped (i.e., the
+two topmost entries are removed) to reload the PC, PSW values.
+
+What could go wrong with this scheme?
+Explain in LESS THAN 50 WORDS.
