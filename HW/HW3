@@ -1,0 +1,42 @@
+CSC 332         Fall 2017       HW3 (Process Management) Due: Tues, Oct 31
+9:15 AM Class: do questions 1-3; the rest are not part of HW but are for extra practice.
+11 AM Class: do questions 4-6; the rest are not part of HW but are for extra practice.
+Tips:
+       Don’t do any internet or library search. It is more beneficial to focus on the textbook and do your own thinking.
+       Note that in Fig 6.3, in the middle column, it says “save regs(A)…”. You need to make an educated guess about which registers are save there.
+       Note that in Fig 6.3, left column says “Handle the trap”. You have to make an educated guess about what registers are being saved and possibly restored in that code.
+       Note that after “Handle the trap”and before “return from trap…”, there is no saving/restoring of any registers. This information may be helpful in deciding what registers are stored in “Handle the trap” or automatically by hardware on occurrence of interrupt. 
+       Can you figure out that the code of Fig 6.3 and 6.4 assumes that there are no nested interrupts?
+Q1. In ch 5, fig. 5.3:
+                In line 23, delete “else {“  and
+                Delete the line 27 (i.e., “}”)
+        Will the new code have the same outputs as before?
+Q2. Consider figs 6.3 and 6.4. Prior to the interrupt in A, it was using the register eax. Clearly it needs to be saved somewhere before switching to B. Where in the code is this register value being saved? Where would it be restored to the actual register eax? Could this saving&restoration be done within the “Handle the trap” in fig 6.3? Assume that RTI restores the same registers that the hardware automatically saves on occurrence of interrupt.
+Q3. Suppose we are in Fig 6.4, at line 4. 
+--What is the entry at the top of kernel stack A ?
+--What is the next entry?
+--And the next ?
+--And the next few entries (their order is not clearly known from the figures) but you can say what they are as a group.
+
+Q4. In ch 5, fig 5.4, page 7, delete the line 16 (i.e., “close…”). How will this affect the Input/Outputs produced by the program?
+
+Q5. Consider figs 6.3 and 6.4. Prior to the interrupt in A, it was using the register eip (instruction pointer). Clearly it needs to be saved somewhere before switching to B. Where in the code is this register value being saved? Where would it be restored to the actual register eip? Could this saving&restoration be done within the “Handle the trap” in fig 6.3? Assume that RTI restores the same registers that the hardware automatically saves on occurrence of interrupt.
+Q6. Suppose we are in Fig 6.4, at line 4. 
+--What is the entry at the top of kernel stack B ?
+--What is the next entry?
+--And the next few entries (their order is not clearly known from the figures) but you can say what they are as a group.
+--------------------------------------------------------------------
+Q7. In figure 5.4, line 11: when fork is executed, suppose the OS does not copy the image of the parent process into the child process yet, because it knows that soon this image will be replaced by the call to execvp in line 24. Instead, it creates everything else about the child process (e.g., pid value, process control block, etc.). Later, when execvp is called, it makes the child’s image in memory as usual.
+This way, we are saving the time in copying the image of parent process into the child process.
+Will this work? Explain.
+Q8. Suppose we are executing in fig 6.4 while we are trying to switch from A to B. We have just finished line 23. Assume at this point the state of A is ready and the state of B is running. At this point suppose another timer interrupt occurs. The scheduler decides to switch from B to C. Many problems will arise in this scenario, but here let us just focus on register ecx. What problem would arise regarding its value being saved or restored? (Don’t worry about other problems such as in Fig 6.3, middle column, we have “move to user mode” which is obviously wrong for nested interrupts)
+ 
+Q9. Note that we have a separate kernet stack for each process. What difficulties will arise if we have a single kernel stack shared by all processes in the system? To find the answer, focus on Figs 6.3, 6.4.
+
+Q10. Assume:
+        --all jobs arrive at time 0
+        --they don’t use any I/O
+        --their execution times (i.e., compute times) are known
+        --all algorithms considered here are non-preemptive
+        --the performance metric is average turnaround time
+Prove that SJF is optimal, by using induction on n (the number of jobs). Make sure that the inductive hypothesis is accurately stated (people often make mistake in stating it).
